@@ -1,0 +1,801 @@
+========================================
+Exploração de objetos Seurat integrados
+Data: 2026-04-11 12:15:37 
+========================================
+####################################################################
+## OBJETO: annotated_integrated_v3 
+## Caminho: /home/matpg/scRNA/singlecell/integrated/results_v3/annotated_integrated_v3.rds 
+####################################################################
+Carregando objeto...
+--- INFORMAÇÕES GERAIS ---
+Classe do objeto: Seurat 
+Número de células (ncol): 275024 
+Número de genes (nrow): 33174 
+Assays disponíveis: RNA 
+Reduções disponíveis: pca harmony umap 
+--- META.DATA ---
+Número de colunas em meta.data: 51 
+Nomes das colunas:
+ [1] "orig.ident"                       "nCount_RNA"                      
+ [3] "nFeature_RNA"                     "GSMID"                           
+ [5] "Fragment"                         "Patient"                         
+ [7] "Type"                             "dataset"                         
+ [9] "percent.mt"                       "percent.rb"                      
+[11] "dbl_class"                        "dbl_score"                       
+[13] "nCount_SCT"                       "nFeature_SCT"                    
+[15] "idh_codel_subtype"                "batch"                           
+[17] "log1p_n_genes_by_counts"          "log1p_total_counts"              
+[19] "log1p_total_counts_hemoglobin"    "log1p_total_counts_mitochondrial"
+[21] "n_genes_by_counts"                "pct_counts_hemoglobin"           
+[23] "pct_counts_in_top_100_genes"      "pct_counts_in_top_200_genes"     
+[25] "pct_counts_in_top_500_genes"      "pct_counts_in_top_50_genes"      
+[27] "pct_counts_mitochondrial"         "scrublet_predicted_doublets"     
+[29] "scrublet_scores"                  "sequencing_saturation"           
+[31] "total_counts"                     "total_counts_hemoglobin"         
+[33] "total_counts_mitochondrial"       "sampleid"                        
+[35] "sample_name"                      "cell_key"                        
+[37] "IDH_status"                       "RNA_snn_res.0.2"                 
+[39] "seurat_clusters"                  "RNA_snn_res.0.4"                 
+[41] "RNA_snn_res.0.6"                  "RNA_snn_res.0.8"                 
+[43] "RNA_snn_res.1"                    "Glioma_score1"                   
+[45] "Myeloid_score1"                   "Tcells_score1"                   
+[47] "Bcells_score1"                    "Endothelial_score1"              
+[49] "Pericytes_score1"                 "Oligodendrocytes_score1"         
+[51] "predicted_celltype"              
+--- SUMÁRIO DETALHADO POR COLUNA ---
+### Column: orig.ident 
+Class: character 
+Table (top 20 levels if many):
+x
+ GSM5518596_rGBM-01-A  GSM5518597_rGBM-01-B  GSM5518598_rGBM-01-C 
+                 4169                 10068                  5482 
+ GSM5518599_rGBM-01-D GSM5518600_ndGBM-01-A GSM5518601_ndGBM-01-C 
+                 5800                  4536                  8896 
+GSM5518602_ndGBM-01-D GSM5518603_ndGBM-01-F GSM5518604_ndGBM-11-A 
+                 8317                  5191                   524 
+GSM5518605_ndGBM-11-B GSM5518606_ndGBM-11-C GSM5518607_ndGBM-11-D 
+                  363                  2618                  1253 
+GSM5518608_ndGBM-02-1 GSM5518609_ndGBM-02-2 GSM5518610_ndGBM-02-4 
+                 7823                  6173                  5887 
+GSM5518611_ndGBM-02-5  GSM5518612_rGBM-02-2  GSM5518613_rGBM-02-3 
+                 7585                  2342                  8948 
+ GSM5518614_rGBM-02-4  GSM5518615_rGBM-02-5 
+                 1025                  9557 
+... and 35 more levels
+### Column: nCount_RNA 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    423    2918    5771    7830   10540   99838 
+Number of NAs: 0 
+### Column: nFeature_RNA 
+Class: integer 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    295    1261    2130    2417    3329    8705 
+Number of NAs: 0 
+### Column: GSMID 
+Class: character 
+Table (top 20 levels if many):
+x
+GSM5518596 GSM5518597 GSM5518598 GSM5518599 GSM5518600 GSM5518601 GSM5518602 
+      4169      10068       5482       5800       4536       8896       8317 
+GSM5518603 GSM5518604 GSM5518605 GSM5518606 GSM5518607 GSM5518608 GSM5518609 
+      5191        524        363       2618       1253       7823       6173 
+GSM5518610 GSM5518611 GSM5518612 GSM5518613 GSM5518614 GSM5518615 
+      5887       7585       2342       8948       1025       9557 
+... and 25 more levels
+### Column: Fragment 
+Class: character 
+Table (top 20 levels if many):
+x
+    LGG-03   LGG-04-1   LGG-04-2   LGG-04-3 ndGBM-01-A ndGBM-01-C ndGBM-01-D 
+      7600       5520       2445       5188       4536       8896       8317 
+ndGBM-01-F ndGBM-02-1 ndGBM-02-2 ndGBM-02-4 ndGBM-02-5 ndGBM-03-1 ndGBM-03-2 
+      5191       7823       6173       5887       7585       3683       2658 
+ndGBM-03-3   ndGBM-04   ndGBM-05   ndGBM-06   ndGBM-07   ndGBM-08 
+      3249       7457       7003       3530       8829       5492 
+... and 25 more levels
+### Column: Patient 
+Class: character 
+Table (top 20 levels if many):
+x
+  LGG-03   LGG-04 ndGBM-01 ndGBM-02 ndGBM-03 ndGBM-04 ndGBM-05 ndGBM-06 
+    7600    13153    26940    27468     9590     7457     7003     3530 
+ndGBM-07 ndGBM-08 ndGBM-09 ndGBM-10 ndGBM-11  rGBM-01  rGBM-02  rGBM-03 
+    8829     5492     5148     9530     4758    25519    21872     9886 
+ rGBM-04  rGBM-05    SM001    SM002 
+   26321     9941     5229     4378 
+... and 9 more levels
+### Column: Type 
+Class: character 
+Table (top 20 levels if many):
+x
+          GBM_Tumor                 LGG Newly Diagnosed GBM       Recurrent GBM 
+              44987               20753              115745               93539 
+### Column: dataset 
+Class: character 
+Table (top 20 levels if many):
+x
+GSE182109   Synapse 
+   230037     44987 
+### Column: percent.mt 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.000   2.831   5.092   6.156   8.174  24.995 
+Number of NAs: 0 
+### Column: percent.rb 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.1656  9.5509 14.6766 15.7630 21.0255 77.7808 
+Number of NAs: 0 
+### Column: dbl_class 
+Class: character 
+Table (top 20 levels if many):
+x
+singlet 
+ 275024 
+### Column: dbl_score 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.00000 0.08314 0.15955 0.17561 0.24579 0.76970 
+Number of NAs: 0 
+### Column: nCount_SCT 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1161    4445    6069    6341    8068   13866 
+Number of NAs: 0 
+### Column: nFeature_SCT 
+Class: integer 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    169    1386    2093    2230    2923    6193 
+Number of NAs: 0 
+### Column: idh_codel_subtype 
+Class: character 
+Table (top 20 levels if many):
+x
+  <NA> 
+275024 
+### Column: batch 
+Class: character 
+Table (top 20 levels if many):
+x
+  GSE182109_LGG-03   GSE182109_LGG-04 GSE182109_ndGBM-01 GSE182109_ndGBM-02 
+              7600              13153              26940              27468 
+GSE182109_ndGBM-03 GSE182109_ndGBM-04 GSE182109_ndGBM-05 GSE182109_ndGBM-06 
+              9590               7457               7003               3530 
+GSE182109_ndGBM-07 GSE182109_ndGBM-08 GSE182109_ndGBM-09 GSE182109_ndGBM-10 
+              8829               5492               5148               9530 
+GSE182109_ndGBM-11  GSE182109_rGBM-01  GSE182109_rGBM-02  GSE182109_rGBM-03 
+              4758              25519              21872               9886 
+ GSE182109_rGBM-04  GSE182109_rGBM-05      Synapse_SM001      Synapse_SM002 
+             26321               9941               5229               4378 
+... and 9 more levels
+### Column: log1p_n_genes_by_counts 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+   6.22    7.41    7.78    7.76    8.17    9.08  230037 
+Number of NAs: 230037 
+### Column: log1p_total_counts 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+   6.40    8.29    8.81    8.79    9.34   11.19  230037 
+Number of NAs: 230037 
+### Column: log1p_total_counts_hemoglobin 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+      0       0       0       0       0       0  230037 
+Number of NAs: 230037 
+### Column: log1p_total_counts_mitochondrial 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+   0.00    5.21    6.11    5.99    6.84    9.17  230037 
+Number of NAs: 230037 
+### Column: n_genes_by_counts 
+Class: integer 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+    500    1652    2391    2677    3527    8745  230037 
+Number of NAs: 230037 
+### Column: pct_counts_hemoglobin 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+      0       0       0       0       0       0  230037 
+Number of NAs: 230037 
+### Column: pct_counts_in_top_100_genes 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  18.26   36.42   41.96   42.27   47.65   91.01  230037 
+Number of NAs: 230037 
+### Column: pct_counts_in_top_200_genes 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  26.22   45.78   52.00   52.13   58.26   96.10  230037 
+Number of NAs: 230037 
+### Column: pct_counts_in_top_500_genes 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  38.94   59.82   66.70   66.75   72.81  100.00  230037 
+Number of NAs: 230037 
+### Column: pct_counts_in_top_50_genes 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  12.02   27.92   32.54   32.89   37.20   74.06  230037 
+Number of NAs: 230037 
+### Column: pct_counts_mitochondrial 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+   0.00    3.62    7.14    7.81   10.91   20.00  230037 
+Number of NAs: 230037 
+### Column: scrublet_predicted_doublets 
+Class: logical 
+Table (top 20 levels if many):
+x
+ FALSE   TRUE   <NA> 
+ 44849    138 230037 
+### Column: scrublet_scores 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+   0.01    0.05    0.08    0.10    0.12    0.86  230037 
+Number of NAs: 230037 
+### Column: sequencing_saturation 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  11.06   52.34   59.40   62.38   74.02   89.79  230037 
+Number of NAs: 230037 
+### Column: total_counts 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+    600    3976    6700    8735   11404   72550  230037 
+Number of NAs: 230037 
+### Column: total_counts_hemoglobin 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+      0       0       0       0       0       0  230037 
+Number of NAs: 230037 
+### Column: total_counts_mitochondrial 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+      0     182     449     689     937    9649  230037 
+Number of NAs: 230037 
+### Column: sampleid 
+Class: character 
+Table (top 20 levels if many):
+x
+RV18001 RV18002 RV18003 RV19001 RV19002 RV19004 RV19005 RV19006 RV19007 RV19008 
+   1832    5229    4378    4157    4225    4370    2479    5313    3805    6457 
+RV19009    <NA> 
+   2742  230037 
+### Column: sample_name 
+Class: character 
+Table (top 20 levels if many):
+x
+ astrocytoma glioblastoma       glioma         <NA> 
+        1832        18317        24838       230037 
+### Column: cell_key 
+Class: character 
+Table (top 20 levels if many):
+x
+AAACCCAAGAAACTGT-1 AAACCCAAGACGCTCC-1 AAACCCAAGAGTTGCG-1 AAACCCAAGCAGGCTA-1 
+                 1                  1                  1                  1 
+AAACCCAAGCGGGTAT-1 AAACCCAAGCTGCCAC-1 AAACCCAAGCTTACGT-1 AAACCCAAGGCACGAT-1 
+                 1                  1                  1                  1 
+AAACCCAAGGGTGAGG-1 AAACCCAAGGTTGAGC-1 AAACCCAAGTCACGCC-1 AAACCCAAGTCATACC-1 
+                 1                  1                  1                  1 
+AAACCCAAGTCATGAA-1 AAACCCAAGTCTTCGA-1 AAACCCAAGTTCCATG-1 AAACCCACAAAGGTTA-1 
+                 1                  1                  1                  1 
+AAACCCACAAGCACCC-1 AAACCCACACAACGTT-1 AAACCCACACCCGTAG-1 AAACCCACACCCTGTT-1 
+                 1                  1                  1                  2 
+... and 44782 more levels
+### Column: IDH_status 
+Class: factor 
+Table (top 20 levels if many):
+x
+IDH-mut  IDH-wt Unknown 
+  42633  232391       0 
+### Column: RNA_snn_res.0.2 
+Class: factor 
+Table (top 20 levels if many):
+x
+    0     1    10    11    12    13    14     2     3     4     5     6     7 
+96475 66528  2235  1603  1521   418   218 27596 27197 21704 10101  8557  4325 
+    8     9 
+ 4069  2477 
+### Column: seurat_clusters 
+Class: factor 
+Table (top 20 levels if many):
+x
+    0     1     2     3     4     5     6     7     8     9    10    11    12 
+33503 30298 22587 21287 13943 11622 11399 11254 10945 10294  9435  8226  8060 
+   13    14    15    16    17    18    19 
+ 7958  7377  6575  6398  4681  4496  4414 
+... and 21 more levels
+### Column: RNA_snn_res.0.4 
+Class: factor 
+Table (top 20 levels if many):
+x
+    0     1    10    11    12    13    14    15    16    17    18    19     2 
+68649 37901  7593  6623  4277  3994  2383  2209  1682  1620   850   419 28196 
+   20    21     3     4     5     6     7 
+  218   101 21495 20747 19851 14018 13913 
+... and 2 more levels
+### Column: RNA_snn_res.0.6 
+Class: factor 
+Table (top 20 levels if many):
+x
+    0     1    10    11    12    13    14    15    16    17    18    19     2 
+38856 32349  8883  7812  7743  4367  3967  3011  2742  2344  2235  2016 31338 
+   20    21    22    23    24    25    26 
+ 2012  1621  1317   854   419   419   177 
+... and 10 more levels
+### Column: RNA_snn_res.0.8 
+Class: factor 
+Table (top 20 levels if many):
+x
+    0     1    10    11    12    13    14    15    16    17    18    19     2 
+38484 30803  9532  8204  7963  7919  6470  5234  4421  4166  3998  2916 22325 
+   20    21    22    23    24    25    26 
+ 2745  2546  2504  2209  1897  1865  1687 
+... and 15 more levels
+### Column: RNA_snn_res.1 
+Class: factor 
+Table (top 20 levels if many):
+x
+    0     1    10    11    12    13    14    15    16    17    18    19     2 
+33503 30298  9435  8226  8060  7958  7377  6575  6398  4681  4496  4414 22587 
+   20    21    22    23    24    25    26 
+ 3993  3988  3299  2732  2574  2235  1987 
+... and 21 more levels
+### Column: Glioma_score1 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-0.96295 -0.59745 -0.28415 -0.08539  0.40510  2.35600 
+Number of NAs: 0 
+### Column: Myeloid_score1 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-0.82684 -0.59851 -0.26233 -0.08605  0.41686  2.27293 
+Number of NAs: 0 
+### Column: Tcells_score1 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-0.386956 -0.209126 -0.125895 -0.008912  0.022428  2.514341 
+Number of NAs: 0 
+### Column: Bcells_score1 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+      Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
+-0.0684842 -0.0094737 -0.0051989  0.0002434  0.0000000  2.6848496 
+Number of NAs: 0 
+### Column: Endothelial_score1 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-0.163489 -0.066753 -0.045226  0.000602 -0.024256  3.736000 
+Number of NAs: 0 
+### Column: Pericytes_score1 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-0.164113 -0.049308 -0.030619 -0.000295 -0.016530  3.666234 
+Number of NAs: 0 
+### Column: Oligodendrocytes_score1 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-0.9504 -0.6876 -0.5242 -0.3046 -0.2354  4.5163 
+Number of NAs: 0 
+### Column: predicted_celltype 
+Class: character 
+Table (top 20 levels if many):
+x
+          Bcells      Endothelial           Glioma          Myeloid 
+           22646             8392            93651            92452 
+Oligodendrocytes        Pericytes           Tcells 
+           21030             9063            27790 
+--- COLUNAS ADICIONAIS DE INTERESSE (se existirem) ---
+Possíveis colunas de cluster: RNA_snn_res.0.2, seurat_clusters, RNA_snn_res.0.4, RNA_snn_res.0.6, RNA_snn_res.0.8, RNA_snn_res.1 
+--- Identidades ativas (Idents) ---
+    0     1    10    11    12    13    14    15    16    17    18    19     2 
+38856 32349  8883  7812  7743  4367  3967  3011  2742  2344  2235  2016 31338 
+   20    21    22    23    24    25    26    27    28    29     3     4     5 
+ 2012  1621  1317   854   419   419   177   135   119   102 29768 23175 19664 
+    6     7     8     9 
+13954 11861 11853  9911 
+####################################################################
+## OBJETO: integrated_harmony_v3 
+## Caminho: /home/matpg/scRNA/singlecell/integrated/results_v3/integrated_harmony_v3.rds 
+####################################################################
+Carregando objeto...
+--- INFORMAÇÕES GERAIS ---
+Classe do objeto: Seurat 
+Número de células (ncol): 275024 
+Número de genes (nrow): 33174 
+Assays disponíveis: RNA 
+Reduções disponíveis: pca harmony umap 
+--- META.DATA ---
+Número de colunas em meta.data: 43 
+Nomes das colunas:
+ [1] "orig.ident"                       "nCount_RNA"                      
+ [3] "nFeature_RNA"                     "GSMID"                           
+ [5] "Fragment"                         "Patient"                         
+ [7] "Type"                             "dataset"                         
+ [9] "percent.mt"                       "percent.rb"                      
+[11] "dbl_class"                        "dbl_score"                       
+[13] "nCount_SCT"                       "nFeature_SCT"                    
+[15] "idh_codel_subtype"                "batch"                           
+[17] "log1p_n_genes_by_counts"          "log1p_total_counts"              
+[19] "log1p_total_counts_hemoglobin"    "log1p_total_counts_mitochondrial"
+[21] "n_genes_by_counts"                "pct_counts_hemoglobin"           
+[23] "pct_counts_in_top_100_genes"      "pct_counts_in_top_200_genes"     
+[25] "pct_counts_in_top_500_genes"      "pct_counts_in_top_50_genes"      
+[27] "pct_counts_mitochondrial"         "scrublet_predicted_doublets"     
+[29] "scrublet_scores"                  "sequencing_saturation"           
+[31] "total_counts"                     "total_counts_hemoglobin"         
+[33] "total_counts_mitochondrial"       "sampleid"                        
+[35] "sample_name"                      "cell_key"                        
+[37] "IDH_status"                       "RNA_snn_res.0.2"                 
+[39] "seurat_clusters"                  "RNA_snn_res.0.4"                 
+[41] "RNA_snn_res.0.6"                  "RNA_snn_res.0.8"                 
+[43] "RNA_snn_res.1"                   
+--- SUMÁRIO DETALHADO POR COLUNA ---
+### Column: orig.ident 
+Class: character 
+Table (top 20 levels if many):
+x
+ GSM5518596_rGBM-01-A  GSM5518597_rGBM-01-B  GSM5518598_rGBM-01-C 
+                 4169                 10068                  5482 
+ GSM5518599_rGBM-01-D GSM5518600_ndGBM-01-A GSM5518601_ndGBM-01-C 
+                 5800                  4536                  8896 
+GSM5518602_ndGBM-01-D GSM5518603_ndGBM-01-F GSM5518604_ndGBM-11-A 
+                 8317                  5191                   524 
+GSM5518605_ndGBM-11-B GSM5518606_ndGBM-11-C GSM5518607_ndGBM-11-D 
+                  363                  2618                  1253 
+GSM5518608_ndGBM-02-1 GSM5518609_ndGBM-02-2 GSM5518610_ndGBM-02-4 
+                 7823                  6173                  5887 
+GSM5518611_ndGBM-02-5  GSM5518612_rGBM-02-2  GSM5518613_rGBM-02-3 
+                 7585                  2342                  8948 
+ GSM5518614_rGBM-02-4  GSM5518615_rGBM-02-5 
+                 1025                  9557 
+... and 35 more levels
+### Column: nCount_RNA 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    423    2918    5771    7830   10540   99838 
+Number of NAs: 0 
+### Column: nFeature_RNA 
+Class: integer 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    295    1261    2130    2417    3329    8705 
+Number of NAs: 0 
+### Column: GSMID 
+Class: character 
+Table (top 20 levels if many):
+x
+GSM5518596 GSM5518597 GSM5518598 GSM5518599 GSM5518600 GSM5518601 GSM5518602 
+      4169      10068       5482       5800       4536       8896       8317 
+GSM5518603 GSM5518604 GSM5518605 GSM5518606 GSM5518607 GSM5518608 GSM5518609 
+      5191        524        363       2618       1253       7823       6173 
+GSM5518610 GSM5518611 GSM5518612 GSM5518613 GSM5518614 GSM5518615 
+      5887       7585       2342       8948       1025       9557 
+... and 25 more levels
+### Column: Fragment 
+Class: character 
+Table (top 20 levels if many):
+x
+    LGG-03   LGG-04-1   LGG-04-2   LGG-04-3 ndGBM-01-A ndGBM-01-C ndGBM-01-D 
+      7600       5520       2445       5188       4536       8896       8317 
+ndGBM-01-F ndGBM-02-1 ndGBM-02-2 ndGBM-02-4 ndGBM-02-5 ndGBM-03-1 ndGBM-03-2 
+      5191       7823       6173       5887       7585       3683       2658 
+ndGBM-03-3   ndGBM-04   ndGBM-05   ndGBM-06   ndGBM-07   ndGBM-08 
+      3249       7457       7003       3530       8829       5492 
+... and 25 more levels
+### Column: Patient 
+Class: character 
+Table (top 20 levels if many):
+x
+  LGG-03   LGG-04 ndGBM-01 ndGBM-02 ndGBM-03 ndGBM-04 ndGBM-05 ndGBM-06 
+    7600    13153    26940    27468     9590     7457     7003     3530 
+ndGBM-07 ndGBM-08 ndGBM-09 ndGBM-10 ndGBM-11  rGBM-01  rGBM-02  rGBM-03 
+    8829     5492     5148     9530     4758    25519    21872     9886 
+ rGBM-04  rGBM-05    SM001    SM002 
+   26321     9941     5229     4378 
+... and 9 more levels
+### Column: Type 
+Class: character 
+Table (top 20 levels if many):
+x
+          GBM_Tumor                 LGG Newly Diagnosed GBM       Recurrent GBM 
+              44987               20753              115745               93539 
+### Column: dataset 
+Class: character 
+Table (top 20 levels if many):
+x
+GSE182109   Synapse 
+   230037     44987 
+### Column: percent.mt 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.000   2.831   5.092   6.156   8.174  24.995 
+Number of NAs: 0 
+### Column: percent.rb 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.1656  9.5509 14.6766 15.7630 21.0255 77.7808 
+Number of NAs: 0 
+### Column: dbl_class 
+Class: character 
+Table (top 20 levels if many):
+x
+singlet 
+ 275024 
+### Column: dbl_score 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.00000 0.08314 0.15955 0.17561 0.24579 0.76970 
+Number of NAs: 0 
+### Column: nCount_SCT 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1161    4445    6069    6341    8068   13866 
+Number of NAs: 0 
+### Column: nFeature_SCT 
+Class: integer 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    169    1386    2093    2230    2923    6193 
+Number of NAs: 0 
+### Column: idh_codel_subtype 
+Class: character 
+Table (top 20 levels if many):
+x
+  <NA> 
+275024 
+### Column: batch 
+Class: character 
+Table (top 20 levels if many):
+x
+  GSE182109_LGG-03   GSE182109_LGG-04 GSE182109_ndGBM-01 GSE182109_ndGBM-02 
+              7600              13153              26940              27468 
+GSE182109_ndGBM-03 GSE182109_ndGBM-04 GSE182109_ndGBM-05 GSE182109_ndGBM-06 
+              9590               7457               7003               3530 
+GSE182109_ndGBM-07 GSE182109_ndGBM-08 GSE182109_ndGBM-09 GSE182109_ndGBM-10 
+              8829               5492               5148               9530 
+GSE182109_ndGBM-11  GSE182109_rGBM-01  GSE182109_rGBM-02  GSE182109_rGBM-03 
+              4758              25519              21872               9886 
+ GSE182109_rGBM-04  GSE182109_rGBM-05      Synapse_SM001      Synapse_SM002 
+             26321               9941               5229               4378 
+... and 9 more levels
+### Column: log1p_n_genes_by_counts 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+   6.22    7.41    7.78    7.76    8.17    9.08  230037 
+Number of NAs: 230037 
+### Column: log1p_total_counts 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+   6.40    8.29    8.81    8.79    9.34   11.19  230037 
+Number of NAs: 230037 
+### Column: log1p_total_counts_hemoglobin 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+      0       0       0       0       0       0  230037 
+Number of NAs: 230037 
+### Column: log1p_total_counts_mitochondrial 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+   0.00    5.21    6.11    5.99    6.84    9.17  230037 
+Number of NAs: 230037 
+### Column: n_genes_by_counts 
+Class: integer 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+    500    1652    2391    2677    3527    8745  230037 
+Number of NAs: 230037 
+### Column: pct_counts_hemoglobin 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+      0       0       0       0       0       0  230037 
+Number of NAs: 230037 
+### Column: pct_counts_in_top_100_genes 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  18.26   36.42   41.96   42.27   47.65   91.01  230037 
+Number of NAs: 230037 
+### Column: pct_counts_in_top_200_genes 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  26.22   45.78   52.00   52.13   58.26   96.10  230037 
+Number of NAs: 230037 
+### Column: pct_counts_in_top_500_genes 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  38.94   59.82   66.70   66.75   72.81  100.00  230037 
+Number of NAs: 230037 
+### Column: pct_counts_in_top_50_genes 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  12.02   27.92   32.54   32.89   37.20   74.06  230037 
+Number of NAs: 230037 
+### Column: pct_counts_mitochondrial 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+   0.00    3.62    7.14    7.81   10.91   20.00  230037 
+Number of NAs: 230037 
+### Column: scrublet_predicted_doublets 
+Class: logical 
+Table (top 20 levels if many):
+x
+ FALSE   TRUE   <NA> 
+ 44849    138 230037 
+### Column: scrublet_scores 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+   0.01    0.05    0.08    0.10    0.12    0.86  230037 
+Number of NAs: 230037 
+### Column: sequencing_saturation 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  11.06   52.34   59.40   62.38   74.02   89.79  230037 
+Number of NAs: 230037 
+### Column: total_counts 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+    600    3976    6700    8735   11404   72550  230037 
+Number of NAs: 230037 
+### Column: total_counts_hemoglobin 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+      0       0       0       0       0       0  230037 
+Number of NAs: 230037 
+### Column: total_counts_mitochondrial 
+Class: numeric 
+Summary (min, 1st Qu., median, mean, 3rd Qu., max, NA count):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+      0     182     449     689     937    9649  230037 
+Number of NAs: 230037 
+### Column: sampleid 
+Class: character 
+Table (top 20 levels if many):
+x
+RV18001 RV18002 RV18003 RV19001 RV19002 RV19004 RV19005 RV19006 RV19007 RV19008 
+   1832    5229    4378    4157    4225    4370    2479    5313    3805    6457 
+RV19009    <NA> 
+   2742  230037 
+### Column: sample_name 
+Class: character 
+Table (top 20 levels if many):
+x
+ astrocytoma glioblastoma       glioma         <NA> 
+        1832        18317        24838       230037 
+### Column: cell_key 
+Class: character 
+Table (top 20 levels if many):
+x
+AAACCCAAGAAACTGT-1 AAACCCAAGACGCTCC-1 AAACCCAAGAGTTGCG-1 AAACCCAAGCAGGCTA-1 
+                 1                  1                  1                  1 
+AAACCCAAGCGGGTAT-1 AAACCCAAGCTGCCAC-1 AAACCCAAGCTTACGT-1 AAACCCAAGGCACGAT-1 
+                 1                  1                  1                  1 
+AAACCCAAGGGTGAGG-1 AAACCCAAGGTTGAGC-1 AAACCCAAGTCACGCC-1 AAACCCAAGTCATACC-1 
+                 1                  1                  1                  1 
+AAACCCAAGTCATGAA-1 AAACCCAAGTCTTCGA-1 AAACCCAAGTTCCATG-1 AAACCCACAAAGGTTA-1 
+                 1                  1                  1                  1 
+AAACCCACAAGCACCC-1 AAACCCACACAACGTT-1 AAACCCACACCCGTAG-1 AAACCCACACCCTGTT-1 
+                 1                  1                  1                  2 
+... and 44782 more levels
+### Column: IDH_status 
+Class: factor 
+Table (top 20 levels if many):
+x
+IDH-mut  IDH-wt Unknown 
+  42633  232391       0 
+### Column: RNA_snn_res.0.2 
+Class: factor 
+Table (top 20 levels if many):
+x
+    0     1    10    11    12    13    14     2     3     4     5     6     7 
+96475 66528  2235  1603  1521   418   218 27596 27197 21704 10101  8557  4325 
+    8     9 
+ 4069  2477 
+### Column: seurat_clusters 
+Class: factor 
+Table (top 20 levels if many):
+x
+    0     1     2     3     4     5     6     7     8     9    10    11    12 
+33503 30298 22587 21287 13943 11622 11399 11254 10945 10294  9435  8226  8060 
+   13    14    15    16    17    18    19 
+ 7958  7377  6575  6398  4681  4496  4414 
+... and 21 more levels
+### Column: RNA_snn_res.0.4 
+Class: factor 
+Table (top 20 levels if many):
+x
+    0     1    10    11    12    13    14    15    16    17    18    19     2 
+68649 37901  7593  6623  4277  3994  2383  2209  1682  1620   850   419 28196 
+   20    21     3     4     5     6     7 
+  218   101 21495 20747 19851 14018 13913 
+... and 2 more levels
+### Column: RNA_snn_res.0.6 
+Class: factor 
+Table (top 20 levels if many):
+x
+    0     1    10    11    12    13    14    15    16    17    18    19     2 
+38856 32349  8883  7812  7743  4367  3967  3011  2742  2344  2235  2016 31338 
+   20    21    22    23    24    25    26 
+ 2012  1621  1317   854   419   419   177 
+... and 10 more levels
+### Column: RNA_snn_res.0.8 
+Class: factor 
+Table (top 20 levels if many):
+x
+    0     1    10    11    12    13    14    15    16    17    18    19     2 
+38484 30803  9532  8204  7963  7919  6470  5234  4421  4166  3998  2916 22325 
+   20    21    22    23    24    25    26 
+ 2745  2546  2504  2209  1897  1865  1687 
+... and 15 more levels
+### Column: RNA_snn_res.1 
+Class: factor 
+Table (top 20 levels if many):
+x
+    0     1    10    11    12    13    14    15    16    17    18    19     2 
+33503 30298  9435  8226  8060  7958  7377  6575  6398  4681  4496  4414 22587 
+   20    21    22    23    24    25    26 
+ 3993  3988  3299  2732  2574  2235  1987 
+... and 21 more levels
+--- COLUNAS ADICIONAIS DE INTERESSE (se existirem) ---
+Possíveis colunas de cluster: RNA_snn_res.0.2, seurat_clusters, RNA_snn_res.0.4, RNA_snn_res.0.6, RNA_snn_res.0.8, RNA_snn_res.1 
+--- Identidades ativas (Idents) ---
+
+    0     1    10    11    12    13    14    15    16    17    18    19     2 
+38856 32349  8883  7812  7743  4367  3967  3011  2742  2344  2235  2016 31338 
+   20    21    22    23    24    25    26    27    28    29     3     4     5 
+ 2012  1621  1317   854   419   419   177   135   119   102 29768 23175 19664 
+    6     7     8     9 
+13954 11861 11853  9911 
+========================================
+Fim da exploração.
+Arquivo de saída: /home/matpg/scRNA/singlecell/integrated/results_v3/exploration_output/exploration_summary.txt 
+========================================
