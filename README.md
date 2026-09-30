@@ -31,10 +31,9 @@ Arquivos na raiz cobrindo:
 - `functions.R` → funções auxiliares
 - `submit_*.sh` → scripts de submissão
 
-## Uso rápido
+## Clonar o repositório
 ```bash
-# Clonar o repositório
-git clone https://github.com/<usuario>/scripts-doutorado.git
+git clone https://github.com/Mateus-Priolo/scripts-doutorado.git
 cd scripts-doutorado
 # Escolher o projeto desejado
 git checkout scRNA      # ou scDNAme ou scWGS
