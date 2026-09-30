@@ -1,20 +1,10 @@
 📊 GSE182109 — Análise scRNA-seq de Gliomas
+
 Pipeline de análise de single-cell RNA-seq do dataset GSE182109 — atlas público de gliomas humanos incluindo GBM primário, GBM recorrente (rGBM) e LGG (astrocytoma e oligodendroglioma).
 
 📖 Visão geral
+
 Este diretório reúne os scripts usados para processar e analisar o dataset GSE182109, cobrindo desde o dado bruto (matrizes 10X do Cell Ranger) até a caracterização de estados celulares e enriquecimento funcional de vias moleculares.
-
-🎯 Objetivos principais
-Montar o objeto Seurat a partir das matrizes 10X
-
-Integrar amostras corrigindo efeito de lote (Harmony)
-
-Anotar tipos celulares e estados tumorais (AC, OPC, NPC, MES, GSC)
-
-Refinar a heterogeneidade dentro do compartimento tumoral
-
-Investigar vias de reparo de DNA e enriquecimento funcional (KEGG/GO)
-
 
 📜 Descrição dos scripts
 <details open> <summary><b>1. <code>gse182109.R</code> — Carregamento e montagem do objeto Seurat</b></summary>
