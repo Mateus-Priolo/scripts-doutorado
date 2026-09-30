@@ -39,12 +39,6 @@ O pipeline é orquestrado por `submit_pipeline.sh`, que submete os jobs no SLURM
 
 ## 2. Estrutura de diretórios esperada
 
-Base assumida pelos scripts:
-
-```bash
-BASE=/home/renanomete/projetos/matdata/met_mat_data/singlecell_novo
-```
-
 | Diretório | Conteúdo |
 |---|---|
 | `results/` | Resultados antigos, incluindo `gse_raw.rds` validado |
@@ -132,11 +126,6 @@ O script `01b` também gera `analysis_scRNAseq_tumor_counts_obs.csv` a partir do
 ## 6. Como executar
 
 ### Pipeline completo
-
-```bash
-cd /home/renanomete/projetos/matdata/met_mat_data/singlecell_novo/scripts
-bash submit_pipeline.sh
-```
 
 Sequência de jobs:
 
