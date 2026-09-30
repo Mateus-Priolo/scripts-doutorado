@@ -178,40 +178,38 @@ Cobre: criação do objeto, QC, normalização, PCA, JackStraw, clustering, UMAP
 
 ℹ️ Não faz parte do pipeline de glioma. Está aqui apenas como referência/aprendizado.
 
-</details>
-📦 Dependências
-Categoria	Pacotes
-Single-cell	Seurat, harmony, dplyr, patchwork, Matrix, tidyverse, RColorBrewer, gridExtra, grid, ggplot2, reshape2
-Bulk RNA-seq	DESeq2, circlize, ComplexHeatmap, org.Hs.eg.db
-Enriquecimento funcional	clusterProfiler, enrichplot, GSEABase, org.Hs.eg.db, pathview, biomaRt, pheatmap, ggupset, tidyverse
-📁 Arquivos de entrada esperados
-Arquivo	Descrição
-Meta_Data_GBMatlas.txt	Metadados clínicos das amostras do GSE182109
-<GSM_*>/*	Diretórios de saída do Cell Ranger (um por amostra)
-merged_counts_clean.txt	Matriz de contagens bulk (para DESeq2)
-samples.txt	Tabela de amostras bulk (para DESeq2)
-listagenespaloma.txt	Lista curada de 31 genes para heatmap
-📤 Saídas principais
-Arquivo	Conteúdo
-merged_objects.rds	Objeto Seurat mesclado e filtrado
-clustered_harmony_merged_objects.rds	Objeto integrado com clusters e UMAP
-markers_cluster*_vs_*.rds	Marcadores diferenciais por cluster
-UMAP_harmony_*.pdf	Visualizações UMAP (cluster, tipo, paciente, fase)
-featureplots_*.pdf	FeaturePlots de assinaturas e marcadores
-cell_states_modulescore.pdf	Estados tumorais por célula
-cluster_pie_charts.pdf	Composição de estados por cluster/tipo
-enriched_kegg_*.tiff, enriched_GO_*.tiff	Enriquecimento KEGG/GO
-gseplot_*.tiff, ridgeplot_*.tiff	GSEA
-filtered_log2FoldChange.txt, foldchanges31.txt	Resultados do DESeq2
-⚠️ Observações importantes
-Caminhos absolutos (C:/Users/... e /data1/projects/...) estão hardcoded nos scripts. Ajuste conforme o ambiente antes de rodar.
+| Categoria | Pacotes |
+|---|---|
+| Single-cell | Seurat, harmony, dplyr, patchwork, Matrix, tidyverse, RColorBrewer, gridExtra, grid, ggplot2, reshape2 |
+| Bulk RNA-seq | DESeq2, circlize, ComplexHeatmap, org.Hs.eg.db |
+| Enriquecimento funcional | clusterProfiler, enrichplot, GSEABase, org.Hs.eg.db, pathview, biomaRt, pheatmap, ggupset, tidyverse |
 
-O dataset é humano (org.Hs.eg.db, species = "hsa").
+## Arquivos de entrada esperados
 
-Harmony é usado duas vezes: no objeto global (corrigindo Fragment) e no subconjunto de glioma/oligodendrócitos (corrigindo Fragment + Patient).
+| Arquivo | Descrição |
+|---|---|
+| Meta_Data_GBMatlas.txt | Metadados clínicos das amostras do GSE182109 |
+| <GSM_*>/* | Diretórios de saída do Cell Ranger (um por amostra) |
+| merged_counts_clean.txt | Matriz de contagens bulk (para DESeq2) |
+| samples.txt | Tabela de amostras bulk (para DESeq2) |
+| listagenespaloma.txt | Lista curada de 31 genes para heatmap |
 
-A lista de genes imunes adicionada à PCA força o algoritmo a capturar heterogeneidade do compartimento imune, evitando que células T e NK sejam colapsadas com células tumorais.
+## Saídas principais
 
-O DESeq2pipeline_Mateus.R é uma análise independente de bulk e pode ser executado em paralelo.
+| Arquivo | Conteúdo |
+|---|---|
+| merged_objects.rds | Objeto Seurat mesclado e filtrado |
+| clustered_harmony_merged_objects.rds | Objeto integrado com clusters e UMAP |
+| markers_cluster*_vs_*.rds | Marcadores diferenciais por cluster |
+| UMAP_harmony_*.pdf | Visualizações UMAP (cluster, tipo, paciente, fase) |
+| featureplots_*.pdf | FeaturePlots de assinaturas e marcadores |
+| cell_states_modulescore.pdf | Estados tumorais por célula |
+| cluster_pie_charts.pdf | Composição de estados por cluster/tipo |
+| enriched_kegg_*.tiff, enriched_GO_*.tiff | Enriquecimento KEGG/GO |
+| gseplot_*.tiff, ridgeplot_*.tiff | GSEA |
+| filtered_log2FoldChange.txt, foldchanges31.txt | Resultados do DESeq2 |
+
+⚠️ Observações
+Caminhos absolutos (C:/Users/... e /data1/projects/...) estão hardcoded nos scripts. Ajuste conforme o ambiente.
 
 <div align="center">
