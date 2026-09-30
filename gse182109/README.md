@@ -15,36 +15,7 @@ Refinar a heterogeneidade dentro do compartimento tumoral
 
 Investigar vias de reparo de DNA e enriquecimento funcional (KEGG/GO)
 
-Análise paralela de bulk RNA-seq com DESeq2
 
-🔄 Fluxo do pipeline
-text
-┌─────────────────────┐
-│   gse182109.R       │  monta o objeto a partir das matrizes 10X
-└──────────┬──────────┘
-           ▼
-┌─────────────────────┐
-│ gse182109_harmony.R │  integra, clusteriza, anota estados
-└──────────┬──────────┘
-           │
-     ┌─────┴─────┐
-     ▼           ▼
-┌──────────┐  ┌────────────────────┐
-│denovo... │  │cellstates_charts.R │
-│refina    │  │pizza de estados    │
-│clusters  │  │por cluster/tipo    │
-└──────────┘  └────────────────────┘
-     │
-     ▼
-┌──────────────────────────────────────┐
-│ repairgenes_..._clusterprofiler.Rmd  │
-│ reparo de DNA + enriquecimento       │
-│ KEGG/GO                              │
-└──────────────────────────────────────┘
-           ▼
-┌─────────────────────┐
-│ DESeq2pipeline_...R │  bulk RNA-seq (paralelo)
-└─────────────────────┘
 📜 Descrição dos scripts
 <details open> <summary><b>1. <code>gse182109.R</code> — Carregamento e montagem do objeto Seurat</b></summary>
 O que faz:
