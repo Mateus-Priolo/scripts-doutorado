@@ -188,7 +188,7 @@ Combina todos os contrastes em uma tabela única (combined_results) e exporta ap
 
 Anota os genes com símbolos via org.Hs.eg.db (chave = ENSEMBL)
 
-Filtra uma lista específica de 31 genes (listagenespaloma.txt) e gera um heatmap com ComplexHeatmap (escala azul-branco-vermelho, −10 a +10)
+Filtra uma lista específica de genes e gera um heatmap com ComplexHeatmap (escala azul-branco-vermelho, −10 a +10)
 
 📤 Saída: filtered_log2FoldChange.txt, foldchanges31.txt e um heatmap de fold changes
 
