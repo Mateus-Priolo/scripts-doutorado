@@ -20,7 +20,6 @@ Este diretório reúne os scripts usados para processar e analisar o dataset GSE
 | <GSM_*>/* | Diretórios de saída do Cell Ranger (um por amostra) |
 | merged_counts_clean.txt | Matriz de contagens bulk (para DESeq2) |
 | samples.txt | Tabela de amostras bulk (para DESeq2) |
-| listagenespaloma.txt | Lista curada de 31 genes para heatmap |
 
 ## Saídas principais
 
