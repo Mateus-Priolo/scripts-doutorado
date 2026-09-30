@@ -1,0 +1,641 @@
+---
+title: "repairgenes"
+output: html_document
+date: "2024-03-21"
+---
+
+
+```{r repairgenes}
+genesMMR<-c("SSBP1", "PMS2", "MLH1", "MSH6", "MSH2", "MSH3", "MLH3", "RFC1", "RFC4", "RFC2", "RFC5", "RFC3", "PCNA", "EXO1", "RPA1", "RPA2", "RPA3", "RPA4", "POLD1", "POLD2", "POLD3", "POLD4", "LIG1")
+genesNER<-c("RBX1", "CUL4B", "CUL4A", "DDB1", "DDB2", "XPC", "RAD23B", "RAD23A", "CETN2", "ERCC8", "ERCC6", "UVSSA", "POLR2A", "POLR2B", "POLR2C", "POLR2D", "POLR2E", "POLR2F", "POLR2G", "POLR2H", "POLR2I", "POLR2L", "POLR2K", "POLR2J", "POLR2J3", "POLR2J2", "POLR2M", "CDK7", "MNAT1", "CCNH", "ERCC3", "ERCC2", "GTF2H5", "GTF2H1", "GTF2H2", "GTF2H2C", "GTF2H3", "GTF2H4", "ERCC5", "XPA", "RPA1", "RPA2", "RPA3", "RPA4", "ERCC4", "ERCC1", "POLD1", "POLD2", "POLD3", "POLD4", "POLE", "POLE2", "POLE3", "POLE4", "PCNA", "RFC1", "RFC4", "RFC2", "RFC5", "RFC3", "LIG1")
+genesBER<-c("OGG1", "NTHL1", "NEIL1", "NEIL2", "NEIL3", "UNG", "SMUG1", "MUTYH", "MPG", "MBD4", "TDG", "APEX1", "PNKP", "TDP1", "POLB", "POLL", "HMGB1", "PARP1", "PARP2", "PARP3", "PARP4", "PARG", "ADPRHL2", "APTX", "XRCC1", "POLG", "POLG2", "LIG3", "POLD1", "POLD2", "POLD3", "POLD4", "POLE", "POLE2", "POLE3", "POLE4", "PCNA", "RFC1", "RFC4", "RFC2", "RFC5", "RFC3", "FEN1", "LIG1")
+genesNHEJ<-c("XRCC6", "XRCC5", "DCLRE1C", "PRKDC", "POLL", "POLM", "LIG4", "XRCC4", "NHEJ1", "RAD50", "MRE11", "FEN1")
+genesHR<-c("SSBP1", "RAD50", "MRE11", "NBN", "ATM", "BRCA1", "BARD1", "RBBP8", "BRIP1", "TOPBP1", "ABRAXAS1", "UIMC1", "BABAM1", "BABAM2", "BRCC3", "PALB2", "BRCA2", "SEM1", "SYCP3", "RPA1", "RPA2", "RPA3", "RPA4", "RAD51", "RAD52", "RAD51B", "RAD51C", "RAD51D", "XRCC2", "XRCC3", "RAD54L", "RAD54B", "POLD1", "POLD2", "POLD3", "POLD4", "BLM", "TOP3A", "TOP3B", "MUS81", "EME1","HJURP")
+genesFANCONI<-c("ATRIP", "ATR", "FANCM", "FAAP24", "CENPS", "CENPX", "TELO2", "HES1", "FAAP100", "FANCA", "FANCB", "FANCC", "FANCE", "FANCF", "FANCG", "FANCL", "WDR48", "USP1", "UBE2T", "FANCI", "FANCD2", "BRCA2", "PALB2", "RAD51C", "RAD51", "BRCA1", "BRIP1", "FAN1", "MLH1", "PMS2", "REV1", "REV3L", "POLH", "POLI", "POLK", "POLN", "RMI1", "RMI2", "TOP3A", "TOP3B", "BLM", "RPA1", "RPA2", "RPA3", "RPA4", "MUS81", "EME1", "EME2", "ERCC4", "ERCC1", "SLX1A", "SLX1B", "SLX4")
+#genes de reparo vias KEGG
+allrepairgenes<-list(unique(c(genesBER,genesNER,genesMMR,genesFANCONI,genesNHEJ,genesHR)))
+
+#repairhallmarks_gsea<-c("AAAS","ADA","ADCY6","ADRM1","AGO4","AK1","AK3","ALYREF","APRT","ARL6IP1","BCAM","BCAP31","BOLA2","BRF2","CANT1","CCNO","CDA","CETN2","CLP1","CMPK2","COX17","CSTF3","DAD1","DCTN4","DDB1","DDB2","DGCR8","DGUOK","DUT","EDF1","EIF1B","ELL","ELOA","ERCC1","ERCC2","ERCC3","ERCC4","ERCC5","ERCC8","FEN1","GMPR2","GPX4","GSDME","GTF2A2","GTF2B","GTF2F1","GTF2H1","GTF2H3","GTF2H5","GTF3C5","GUK1","HCLS1","HPRT1","IMPDH2","ITPA","LIG1","MPC2","MPG","MRPL40","NCBP2","NELFB","NELFCD","NELFE","NFX1","NME1","NME3","NME4","NPR2","NT5C","NT5C3A","NUDT21","NUDT9","PCNA","PDE4B","PDE6G","PNP","POLA1","POLA2","POLB","POLD1","POLD3","POLD4","POLE4","POLH","POLL","POLR1C","POLR1D","POLR2A","POLR2C","POLR2D","POLR2E","POLR2F","POLR2G","POLR2H","POLR2I","POLR2J","POLR2K","POLR3C","POLR3GL","POM121","PRIM1","RAD51","RAD52","RAE1","RALA","RBX1","REV3L","RFC2","RFC3","RFC4","RFC5","RNMT","RPA2","RPA3","RRM2B","SAC3D1","SDCBP","SEC61A1","SF3A3","SMAD5","SNAPC4","SNAPC5","SRSF6","SSRP1","STX3","SUPT4H1","SUPT5H","SURF1","TAF10","TAF12","TAF13","TAF1C","TAF6","TAF9","TARBP2","TK2","TMED2","TP53","TSG101","TYMS","UMPS","UPF3B","USP11","VPS28","VPS37B","VPS37D","XPC","ZNF707","ZWINT")
+
+#repairgenes_artigo11040501<-c("ALKBH2","ALKBH3","MGMT","APEX1","APEX2","APTX","FEN1","LIG1","LIG3","MBD4","MPG","MUTYH","NEIL1","NEIL2","NEIL3","NTHL1","OGG1","PARP1","PARP2","PCNA","PNKP","POLB","POLD1","POLE","POLL","WRN","SMUG1","TDG","UNG","XRCC1","DCLRE1C","XRCC6","XRCC5","LIG4","NHEJ1","POLM","PRKDC","XRCC4","EXO1","MLH1","MLH3","MSH2","MSH3","MSH6","PMS1","PMS2","POLH","POLI","POLK","POLN","POLQ","REV1","REV3L","ATM","ATR","ATRIP","BLM","BRCA1","CCNH","CDK7","CDKN1A","CHEK1","CHEK2","COPS5","DCLRE1A","DCLRE1B","FANCA","FANCC","GPS1","HUS1","MDC1","MNAT1","MRE11","NBN","RAD1","RAD17","RAD18","RAD23A","RAD50","RAD9A","RFC1","RFC2","RFC3","RFC4","RFC5","TOPBP1","TP53","BRCA2","FAAP24","EME1","EME2","FANCB","FANCD2","FANCE","FANCF","FANCG","FANCI","FANCL","MSH4","MSH5","MUS81","RAD51","RAD52","ERCC8","ERCC6","CUL4A","DDB1","DDB2","ERCC1","GTF2H1","GTF2H2","GTF2H3","GTF2H4","GTF2H5","MMS19","RAD23B","RPA1","XPA","ERCC3","XPC","ERCC2","ERCC4","ERCC5")
+
+
+#genes reparo vias KEGG+ hallmarks gsea
+allrepairgenes_plus_hallmarksgsea<-unique(c(allrepairgenes,repairhallmarks_gsea))
+#genes reparo vias KEGG+gsea+artigo11040501
+allrepairgenes_plus_hallmarksgsea_plus_artigo<-unique(c(allrepairgenes,repairhallmarks_gsea,repairgenes_artigo11040501))
+
+not_in_allrepairgenes <- repairhallmarks_gsea[!repairhallmarks_gsea %in% allrepairgenes]
+not_in_gsea<-allrepairgenes[!allrepairgenes %in% repairhallmarks_gsea]
+
+
+
+write.table(allrepairgenes,sep = "\t", row.names = FALSE, col.names = TRUE,file="allrepairgenes.txt")
+max_length <- max(length(genesMMR),length(genesNER),length(genesBER),
+                    length(genesNHEJ),length(genesHR),length(genesFANCONI))
+allrepairgenesdf<-data.frame(genesMMR = c(genesMMR, rep(NA, max_length - length(genesMMR))),genesNER = c(genesNER,rep(NA, max_length - length(genesNER))),genesBER=c(genesBER,rep(NA, max_length - length(genesBER))),genesNHEJ=c(genesNHEJ,rep(NA, max_length - length(genesNHEJ))),genesHR=c(genesHR,rep(NA, max_length - length(genesHR))),genesFanconi=c(genesFANCONI,rep(NA, max_length - length(genesFANCONI))))
+#write.table(allrepairgenesdf,"Repairgenes_table.txt",row.names=F,sep="\t")
+
+
+```
+
+```{r proliferation}
+proliferation_hallmarks_gsea<-c("ABI1","ACHE","ACVRL1","ADAMTS1","ADAMTS8","ADGRB1","ADRA1A","ADRA1B","ADRA1D","ADRA2A","AGGF1","AIF1","AIMP1","ALOX12","ALOX15B","ANG","APC","APPL1","APPL2","AREG","ARHGEF1","ARHGEF2","ARTN","ATP5IF1","ATP8A2","B4GALT7","BAP1","BCAR1","BCAT1","BIN1","BLZF1","BMI1","BMPR2","BNC1","BNIPL","BRCA1","BRCA2","BST2","BTC","BTG1","BTG2","BTG3","BTG4","BUB1","BUB1B","BUB3","CADM1","CALCA","CAPN1","CAPNS1","CBFA2T2","CBFA2T3","CCDC88A","CCKBR","CCL14","CCL23","CCN1","CD160","CD164","CD24","CD274","CD276","CD28","CD33","CD3E","CD40LG","CD47","CD70","CD74","CD79A","CD81","CD86","CDC123","CDC14A","CDC16","CDC25A","CDC25B","CDC25C","CDC27","CDC6","CDC7","CDCA7","CDH13","CDK10","CDK11B","CDK13","CDK2","CDK3","CDK4","CDK5","CDK5R1","CDK6","CDK7","CDK9","CDKN1A","CDKN1C","CDKN2A","CDKN2B","CDKN2C","CDKN2D","CDKN3","CGREF1","CGRRF1","CHEK1","CHRM1","CHRM3","CHRM4","CHRM5","CHRNA10","CHRNA7","CIAO1","CKLF","CKS1B","CKS2","CLEC11A","CLK1","CNOT8","COL18A1","COL4A3","CREG1","CRIP1","CRTAM","CSE1L","CSF1","CSF1R","CSF3","CTBP1","CTBP2","CTF1","CTNNBIP1","CUL1","CUL2","CUL3","CUL4A","CUL5","CXCL1","CXCL10","CXCL5","CXCL8","CXCR2","DAB2","DCTN2","DDX11","DERL2","DHPS","DKC1","DLEC1","DLG1","DLG5","DNAJA2","DNPH1","DTYMK","DUSP22","E2F1","E4F1","EBI3","EDN1","EEF1E1","EGFR","EGR4","EHF","EID2","EIF2AK2","EIF5A","EIF5A2","ELANE","ELF4","ELF5","ELN","EMP1","EMP2","EMP3","ENPEP","ENPP7","EPGN","EPHB4","EPS15","EPS8","ERBB2","ERBB4","EREG","ERF","ERG","ETS1","EVI5","FABP3","FABP6","FABP7","FES","FGF10","FGF18","FGF5","FGF7","FLT1","FLT3","FLT3LG","FLT4","FOSL1","FOXO4","FOXP3","FRK","FSCN1","FTH1","FZD3","GAB1","GAS6","GAS8","GFI1B","GHRL","GLI1","GLI2","GLMN","GLP2R","GML","GNL3","GNRH1","GPC4","GPNMB","GTPBP4","HCLS1","HDGF","HELLS","HGS","HOXC10","ICOSLG","IFITM1","IFNL1","IFRD2","IGF1","IGF1R","IGFBP4","IGFBP6","IGFBP7","IL11","IL12RB1","IL12RB2","IL15","IL15RA","IL18","IL1A","IL1B","IL2","IL21","IL27","IL2RA","IL31RA","IL4","IL5RA","IL6","IL6R","IL7","IL9R","ING1","ING4","ING5","INHA","INSIG1","IRF2","ISG20","JAG2","KAT2B","KHDRBS1","KIF15","KIF2C","KITLG","KLF10","KLF11","KLF4","KLK8","KRT16","KRT2","LAMA1","LAMB1","LAMC1","LAMP3","LDOC1","LGI1","LIF","LMO1","LRP1","LRP5","LRPAP1","LST1","LY86","LYN","MAGED1","MAP3K11","MAPRE1","MAPRE2","MARK4","MAS1","MATK","MCTS1","MDM2","MDM4","MFN2","MIA","MIF","MKI67","MNAT1","MNT","MS4A2","MST1R","MT3","MTCP1","MXD1","MXD4","MXI1","MYC","MYO16","NAA35","NAB2","NAMPT","NANOG","NAP1L1","NASP","NCK1","NCK2","NDN","NDP","NDUFS4","NF1","NF2","NME1","NME2","NOP2","NOTCH2","NOX4","NPM1","NPY","NR6A1","NRDC","NRP1","NUDC","NUP62","OPRM1","OSM","OSMR","PA2G4","PAWR","PCNA","PDAP1","PDF","PDGFA","PDGFRA","PDS5B","PDZK1","PEMT","PGF","PIM1","PIM2","PLAAT4","PLK1","POLA1","POU3F2","PPARD","PPM1D","PRDM4","PRDX1","PRG4","PRKD1","PRKRA","PRL","PRMT5","PROK2","PRTN3","PTCH1","PTEN","PTHLH","PTK2B","PTN","PTPRC","PYY","QSOX1","RACGAP1","RAF1","RAPGEF3","RARRES1","RASGRP4","RBBP4","RBBP7","RBFOX2","REG1A","REG1B","RERG","RHOG","RPS27","RPS4X","RUNX3","S100A11","S100B","S1PR2","S1PR3","SCG2","SCIN","SERPINF1","SERTAD1","SESN1","SFN","SFTPD","SIPA1","SIRPG","SKP2","SLAMF1","SLC29A2","SPDYA","SPEG","SPHK1","SPOCK1","SRA1","SSR1","SST","SSTR1","SSTR2","SSTR3","STAMBP","STIL","SYK","TACSTD2","TAL1","TBC1D8","TBRG1","TBRG4","TBX2","TBX3","TBX5","TCF19","TCFL5","TCIRG1","TDGF1","TENM1","TFDP1","TGFA","TGFB1I1","TGFB2","TGFBI","TGFBR1","TGFBR2","THAP12","THPO","TIMELESS","TIMP1","TIPIN","TM4SF4","TNFRSF11A","TNFRSF17","TNFRSF8","TNFRSF9","TNFSF12","TNFSF13","TNFSF13B","TNFSF15","TNFSF4","TNFSF8","TNFSF9","TOB1","TOB2","TP53","TP53I11","TPX2","TRAIP","TRIB1","TRIM27","TSC1","TSHR","TSPAN31","TSPO","TTK","TUSC2","TXN","UBE2V2","UBR5","UHRF1","UHRF2","USP8","UTP20","VEGFA","VEGFB","VEGFD","VHL","VIP","VIPR1","VTI1B","ZEB1","ZFP36L2","ZMYND11","ZPR1")
+
+allrepair_without_prolif<-allrepairgenes_plus_hallmarksgsea_plus_artigo[!allrepairgenes_plus_hallmarksgsea_plus_artigo %in% proliferation_hallmarks_gsea]
+
+allprolif_without_repair<-proliferation_hallmarks_gsea[!proliferation_hallmarks_gsea %in% allrepairgenes_plus_hallmarksgsea_plus_artigo]
+
+```
+
+```{r module scores}
+harmony_merged_objects<-JoinLayers(harmony_merged_objects)
+harmony_merged_objects <- AddModuleScore(object = harmony_merged_objects, 
+                                         features = allrepairgenes, 
+                                         name = "Repair_score")
+
+pdf(file = 'featureplots_Repairscore6.pdf')
+FeaturePlot(harmony_merged_objects,features="Repair_score1",label = TRUE, repel = TRUE)&
+  scale_colour_gradientn(colours = rev(brewer.pal(n = 11, name = "RdBu")))
+dev.off()
+
+harmony_merged_objects@meta.data$Type<-factor(x=harmony_merged_objects@meta.data$Type,levels=c("LGG","GBM","Recurrent GBM"))
+pdf(file = 'featureplots_Repairscore_byTumortype.pdf',width = 18, height = 10)
+FeaturePlot(harmony_merged_objects,features = "Repair_score1",split.by="Type" ,label = TRUE, repel = TRUE)&
+  scale_colour_gradientn(colours = rev(brewer.pal(n = 11, name = "RdBu")))
+dev.off()
+
+harmony_merged_objects <- AddModuleScore(object = harmony_merged_objects, 
+                                         features = allprolif_without_repair, 
+                                         name = "Proliferation_score")
+pdf(file = 'featureplots_Proliferationscore.pdf')
+FeaturePlot(harmony_merged_objects,features = "Proliferation_score1", label = TRUE, repel = TRUE)+
+  scale_colour_gradientn(colours = rev(brewer.pal(n = 11, name = "RdBu")))
+dev.off()
+
+
+gsc<-c("ID3", "ID4")
+harmony_merged_objects <- AddModuleScore(object = harmony_merged_objects, 
+                                         features = gsc, 
+                                         name = "GSC_score")
+pdf(file = 'featureplots_GSCscore.pdf')
+FeaturePlot(harmony_merged_objects,features = "GSC_score1", label = TRUE, repel = TRUE)+
+  scale_colour_gradientn(colours = rev(brewer.pal(n = 11, name = "RdBu")))
+dev.off()
+
+```
+
+
+```{r dotplot, echo=FALSE}
+pdf(file='dotplot_NHEJ.pdf',width = 4, height = 4)
+DotPlot(harmony_merged_objects, features =genesNHEJ,group.by = "seurat_clusters",idents=c(2,6,7,8,12,21))&coord_flip()& 
+  scale_colour_gradientn(colours = rev(brewer.pal(n = 11, name = "RdBu")))&
+  theme(text=element_text(size=6))
+dev.off()
+pdf(file='dotplot_MMR.pdf',width = 4, height = 5)
+DotPlot(harmony_merged_objects, features =genesMMR,group.by = "seurat_clusters",idents=c(2,6,7,8,12,21))&coord_flip()& 
+  scale_colour_gradientn(colours = rev(brewer.pal(n = 11, name = "RdBu")))&
+  theme(text=element_text(size=6))
+dev.off()
+pdf(file='dotplot_HR.pdf',width = 4, height = 8)
+DotPlot(harmony_merged_objects, features =genesHR,group.by = "seurat_clusters",idents=c(2,6,7,8,12,21))&coord_flip()& 
+  scale_colour_gradientn(colours = rev(brewer.pal(n = 11, name = "RdBu")))&
+  theme(text=element_text(size=6))
+dev.off()
+pdf(file='dotplot_NER.pdf',width = 4, height = 11)
+DotPlot(harmony_merged_objects, features =genesNER,group.by = "seurat_clusters",idents=c(2,6,7,8,12,21))&coord_flip()& 
+  scale_colour_gradientn(colours = rev(brewer.pal(n = 11, name = "RdBu")))&
+  theme(text=element_text(size=6))
+dev.off()
+pdf(file='dotplot_BER.pdf',width = 4, height = 8)
+DotPlot(harmony_merged_objects, features =genesBER,group.by = "seurat_clusters",idents=c(2,6,7,8,12,21))&coord_flip()& 
+  scale_colour_gradientn(colours = rev(brewer.pal(n = 11, name = "RdBu")))&
+  theme(text=element_text(size=6))
+dev.off()
+pdf(file='dotplot_Fanconi.pdf',width = 5, height = 9.5)
+DotPlot(harmony_merged_objects, features =genesFANCONI,group.by = "seurat_clusters",idents=c(2,6,7,8,12,21))&coord_flip()& 
+  scale_colour_gradientn(colours = rev(brewer.pal(n = 11, name = "RdBu")))
+dev.off()
+
+pdf(file='dotplot_allrepair.pdf',width = 35, height = 3)
+DotPlot(harmony_merged_objects, features =allrepairgenes,group.by = "seurat_clusters",idents=c(2,6,7,8,12,21))& theme(axis.text.x = element_text(angle=90,vjust=0.5, hjust=1,size=8))&
+  scale_colour_gradientn(colours = rev(brewer.pal(n = 11, name = "RdBu")))
+dev.off()
+
+pdf(file='dotplot_C16MARKERS.pdf',width = 25, height = 3)
+DotPlot(harmony_merged_objects, features =rownames(markers_cluster16_vs_othersfromTcells),group.by = "seurat_clusters",idents=c(3,16,18,19))& theme(axis.text.x = element_text(angle=90,vjust=0.5, hjust=1,size=8))&
+  scale_colour_gradientn(colours = rev(brewer.pal(n = 11, name = "RdBu")))
+dev.off()
+
+c18<-c("PCLAF","MKI67","TYMS","STMN1","PCNA","CDK1")
+c19<-c14
+c16<-c("TYROBP","C1QC","CD68","CD14","CD163","FCER1G")
+c3<-c("RARRES3","KIAA1551","AES","SEPT7","RPS4Y1","GZMM","SEPT1")
+
+pdf(file='dotplot_Tcellclusters.pdf',width = 14, height = 3)
+DotPlot(harmony_merged_objects, features =c(c3,c16,c18,c19),group.by = "seurat_clusters",idents=c(3,16,18,19))&theme(axis.text.x = element_text(angle=90,vjust=0.5, hjust=1,size=8))&
+  scale_colour_gradientn(colours = rev(brewer.pal(n = 11, name = "RdBu")))
+dev.off()
+
+treg<-c("CD49B","FOXP3","IL2RA","CTLA4","TNFRSF4","TNFRSF18","TNFRSF9","ICOS","TIGIT")
+nk<-c("IFNG","NKG7","GNLY","KLRD1")
+CD8<-c("CD8","CD8A","CD8B")
+ts<-c("CD4","CD8","CD8A","CD8B","IFNG","NKG7","GNLY","KLRD1","FOXP3","CD25","IL2RA","CTLA4","TNFRSF4","OX40","TNFRSF18","GITR","TNFRSF9","4-1BB","ICOS","TIGIT")
+
+pdf(file='dotplot_ttypesmarkers.pdf',width = 14, height = 3)
+DotPlot(harmony_merged_objects, features =ts,group.by = "seurat_clusters",idents=c(3,16,18,19))&theme(axis.text.x = element_text(angle=90,vjust=0.5, hjust=1,size=8))&
+  scale_colour_gradientn(colours = rev(brewer.pal(n = 11, name = "RdBu")))
+dev.off()
+
+pdf(file='dotplot_C13MARKERS.pdf',width = 35, height = 3)
+DotPlot(harmony_merged_objects, features =rownames(markers_cluster13_vs_othersfrommyeloids),group.by = "seurat_clusters",idents=c(0,1,4,5,9,10,13,14))& theme(axis.text.x = element_text(angle=90,vjust=0.5, hjust=1,size=8))&
+  scale_colour_gradientn(colours = rev(brewer.pal(n = 11, name = "RdBu")))
+dev.off()
+
+
+c0<-c("EGR2","EGR3","OLR1","AC020916.1","NR4A1","KDM6B")
+c1<-c("SORL1","LINC01736","CX3CR1")
+c4<-c("FCGBP","STAB1","PKIB")
+c5<-c("BNIP3","BNIP3L","ERO1A","HK2","NDRG1","ADM","PLIN2","P4HA1","GPNMB","CLEC2B")
+c9<-c("VCAN","FCN1","S100A8","S100A9","LYZ")
+c10<-c("STMN1","PCLAF","CKS1B","TK1","BIRC5","MKI67")
+c13<-c("PPA1","AREG","JAML","HLA-DQA1","C6orf48")
+c14<-c("MX1","MX2","ISG15","IFI44L","IFIT1","IFIT3")
+pdf(file='dotplot_myeloidclusters.pdf',width = 14, height = 3)
+DotPlot(harmony_merged_objects, features =c(c0,c1,c4,c5,c9,c10,c13,c14),group.by = "seurat_clusters",idents=c(5,9,10,13,14,0,1,4))&theme(axis.text.x = element_text(angle=90,vjust=0.5, hjust=1,size=8))&
+  scale_colour_gradientn(colours = rev(brewer.pal(n = 11, name = "RdBu")))
+dev.off()
+
+pdf(file = 'myeloidc5_featureplots.pdf',width = 14, height = 10)
+FeaturePlot(harmony_merged_objects,features = c5, label = TRUE, repel = TRUE,ncol=5)&
+  scale_colour_gradientn(colours = rev(brewer.pal(n = 11, name = "RdBu")))
+dev.off()
+
+pdf(file = 'MDSC_featureplots.pdf',width = 20, height = 4)
+FeaturePlot(harmony_merged_objects,features = c("PLIN2","HK2","HMOX1","ADM","P4HA1"), label = TRUE, repel = TRUE,ncol=5)&
+  scale_colour_gradientn(colours = rev(brewer.pal(n = 11, name = "RdBu")))
+dev.off()
+
+pdf(file = 'treg_featureplots.pdf',width = 14, height = 10)
+FeaturePlot(harmony_merged_objects,features = treg, label = TRUE, repel = TRUE,ncol=5)&
+  scale_colour_gradientn(colours = rev(brewer.pal(n = 11, name = "RdBu")))
+dev.off()
+
+#Reassignment
+microglia<-c(0,1,14)
+mac1<-c(4)
+mac2<-c(9)
+pmac<-c(10)
+DC<-c(13)
+MDSC<-c(5)
+NK<-c(3)
+CD4<-c(16)
+ptcell<-c(18)
+CD8<-c(19)
+bcells<-c(15)
+glioma<-c(2, 6, 7, 8, 12, 21)
+oligodendrocytes <- c(11)
+endothelial<- c(20)
+pericytes <-c(17)
+
+harmony_merged_objects@meta.data$Reassignment <- NA
+cells_in_microglia_clusters <- WhichCells(harmony_merged_objects, idents = microglia)
+harmony_merged_objects@meta.data[cells_in_microglia_clusters, "Reassignment"] <- "Microglia"
+
+cells_in_mac1_clusters <- WhichCells(harmony_merged_objects, idents = mac1)
+harmony_merged_objects@meta.data[cells_in_mac1_clusters, "Reassignment"] <- "mac1"
+
+cells_in_mac2_clusters <- WhichCells(harmony_merged_objects, idents = mac2)
+harmony_merged_objects@meta.data[cells_in_mac2_clusters, "Reassignment"] <- "mac2"
+
+cells_in_pmac_clusters <- WhichCells(harmony_merged_objects, idents = pmac)
+harmony_merged_objects@meta.data[cells_in_pmac_clusters, "Reassignment"] <- "p-mac"
+
+cells_in_dc_clusters <- WhichCells(harmony_merged_objects, idents = DC)
+harmony_merged_objects@meta.data[cells_in_dc_clusters, "Reassignment"] <- "DC"
+
+cells_in_mdsc_clusters <- WhichCells(harmony_merged_objects, idents = MDSC)
+harmony_merged_objects@meta.data[cells_in_mdsc_clusters, "Reassignment"] <- "MDSC"
+
+cells_in_nk_clusters <- WhichCells(harmony_merged_objects, idents = NK)
+harmony_merged_objects@meta.data[cells_in_nk_clusters, "Reassignment"] <- "NK"
+
+cells_in_cd4_clusters <- WhichCells(harmony_merged_objects, idents = CD4)
+harmony_merged_objects@meta.data[cells_in_cd4_clusters, "Reassignment"] <- "CD4"
+
+cells_in_ptcell_clusters <- WhichCells(harmony_merged_objects, idents = ptcell)
+harmony_merged_objects@meta.data[cells_in_ptcell_clusters, "Reassignment"] <- "proliferating T-cells"
+
+cells_in_glioma_clusters <- WhichCells(harmony_merged_objects, idents = glioma)
+harmony_merged_objects@meta.data[cells_in_glioma_clusters, "Reassignment"] <- "Glioma"
+
+cells_in_bcells_clusters <- WhichCells(harmony_merged_objects, idents = bcells)
+harmony_merged_objects@meta.data[cells_in_bcells_clusters, "Reassignment"] <- "B-cells"
+
+cells_in_oligo_clusters <- WhichCells(harmony_merged_objects, idents = oligodendrocytes)
+harmony_merged_objects@meta.data[cells_in_oligo_clusters, "Reassignment"] <- "Oligodendrocytes"
+
+cells_in_endo_clusters <- WhichCells(harmony_merged_objects, idents = endothelial)
+harmony_merged_objects@meta.data[cells_in_endo_clusters, "Reassignment"] <- "Endothelial"
+
+cells_in_peri_clusters <- WhichCells(harmony_merged_objects, idents = pericytes)
+harmony_merged_objects@meta.data[cells_in_peri_clusters, "Reassignment"] <- "Pericytes"
+
+
+
+
+
+
+```
+
+```{r markers}
+
+#markers cluster8 vs 2,6,7,12,21;
+markers_cluster8_vs_othersfromglioma<-FindMarkers(harmony_merged_objects,ident.1=8,ident.2=c(2,6,7,12,21))
+saveRDS(markers_cluster8_vs_othersfromglioma,file="markers_cluster8_vs_othersfromglioma.rds")
+#markers cluster2 vs 6,7,8,12,21;
+markers_cluster2_vs_othersfromglioma<-FindMarkers(harmony_merged_objects,ident.1=2,ident.2=c(6,7,8,12,21))
+saveRDS(markers_cluster2_vs_othersfromglioma,file="markers_cluster2_vs_othersfromglioma.rds")
+#markers cluster6 vs 2,7,8,12,21;
+markers_cluster6_vs_othersfromglioma<-FindMarkers(harmony_merged_objects,ident.1=6,ident.2=c(2,7,8,12,21))
+saveRDS(markers_cluster6_vs_othersfromglioma,file="markers_cluster6_vs_othersfromglioma.rds")
+#markers cluster7 vs 2,6,8,12,21;
+markers_cluster7_vs_othersfromglioma<-FindMarkers(harmony_merged_objects,ident.1=7,ident.2=c(2,6,8,12,21))
+saveRDS(markers_cluster7_vs_othersfromglioma,file="markers_cluster7_vs_othersfromglioma.rds")
+#markers cluster12 vs 2,6,7,8,21;
+markers_cluster12_vs_othersfromglioma<-FindMarkers(harmony_merged_objects,ident.1=12,ident.2=c(2,6,7,8,21))
+saveRDS(markers_cluster12_vs_othersfromglioma,file="markers_cluster12_vs_othersfromglioma.rds")
+#markers cluster21 vs 2,6,7,8,12;
+markers_cluster21_vs_othersfromglioma<-FindMarkers(harmony_merged_objects,ident.1=21,ident.2=c(2,6,7,8,12))
+saveRDS(markers_cluster21_vs_othersfromglioma,file="markers_cluster21_vs_othersfromglioma.rds")
+###
+#markers cluster18 vs 3,16,19;
+markers_cluster18_vs_othersfromTcells<-FindMarkers(harmony_merged_objects,ident.1=18,ident.2=c(3,16,19),only.pos=TRUE,min.diff.pct=0.2)
+saveRDS(markers_cluster18_vs_othersfromTcells,file="markers_cluster18_vs_othersfromTcells.rds")
+#markers cluster19 vs 3,16,18;
+markers_cluster19_vs_othersfromTcells<-FindMarkers(harmony_merged_objects,ident.1=19,ident.2=c(3,16,18),only.pos=TRUE,min.diff.pct=0.2)
+saveRDS(markers_cluster19_vs_othersfromTcells,file="markers_cluster19_vs_othersfromTcells.rds")
+#markers cluster16 vs 3,18,19;
+markers_cluster16_vs_othersfromTcells<-FindMarkers(harmony_merged_objects,ident.1=16,ident.2=c(3,18,19),only.pos=TRUE,min.diff.pct=0.2)
+saveRDS(markers_cluster16_vs_othersfromTcells,file="markers_cluster16_vs_othersfromTcells.rds")
+#markers cluster3 vs 16,18,19;
+markers_cluster3_vs_othersfromTcells<-FindMarkers(harmony_merged_objects,ident.1=3,ident.2=c(16,18,19),only.pos=TRUE,min.diff.pct=0.2)
+saveRDS(markers_cluster3_vs_othersfromTcells,file="markers_cluster3_vs_othersfromTcells.rds")
+###
+#markers cluster5 vs 0,1,4,9,10,13,14;
+markers_cluster5_vs_othersfrommyeloids<-FindMarkers(harmony_merged_objects,ident.1=5,ident.2=c(0,1,4,9,10,13,14),only.pos=TRUE,min.diff.pct=0.2)
+saveRDS(markers_cluster5_vs_othersfrommyeloids,file="markers_cluster5_vs_othersfrommyeloids.rds")
+#markers cluster0 vs 1,4,5,9,10,13,14;
+markers_cluster0_vs_othersfrommyeloids<-FindMarkers(harmony_merged_objects,ident.1=0,ident.2=c(1,4,5,9,10,13,14),only.pos=TRUE,min.diff.pct=0.2)
+saveRDS(markers_cluster0_vs_othersfrommyeloids,file="markers_cluster0_vs_othersfrommyeloids.rds")
+#markers cluster1 vs 0,4,5,9,10,13,14;
+markers_cluster1_vs_othersfrommyeloids<-FindMarkers(harmony_merged_objects,ident.1=1,ident.2=c(0,4,5,9,10,13,14),only.pos=TRUE,min.diff.pct=0.2)
+saveRDS(markers_cluster1_vs_othersfrommyeloids,file="markers_cluster1_vs_othersfrommyeloids.rds")
+#markers cluster4 vs 0,1,5,9,10,13,14;
+markers_cluster4_vs_othersfrommyeloids<-FindMarkers(harmony_merged_objects,ident.1=4,ident.2=c(0,1,5,9,10,13,14),only.pos=TRUE,min.diff.pct=0.2)
+saveRDS(markers_cluster4_vs_othersfrommyeloids,file="markers_cluster4_vs_othersfrommyeloids.rds")
+#markers cluster9 vs 0,1,4,5,10,13,14;
+markers_cluster9_vs_othersfrommyeloids<-FindMarkers(harmony_merged_objects,ident.1=9,ident.2=c(0,1,4,5,10,13,14),only.pos=TRUE,min.diff.pct=0.2)
+saveRDS(markers_cluster9_vs_othersfrommyeloids,file="markers_cluster9_vs_othersfrommyeloids.rds")
+#markers cluster10 vs 0,1,4,5,9,13,14;
+markers_cluster10_vs_othersfrommyeloids<-FindMarkers(harmony_merged_objects,ident.1=10,ident.2=c(0,1,4,5,9,13,14),only.pos=TRUE,min.diff.pct=0.2)
+saveRDS(markers_cluster10_vs_othersfrommyeloids,file="markers_cluster10_vs_othersfrommyeloids.rds")
+#markers cluster13 vs 0,1,4,5,9,10,14;
+markers_cluster13_vs_othersfrommyeloids<-FindMarkers(harmony_merged_objects,ident.1=13,ident.2=c(0,1,4,5,9,10,14),only.pos=TRUE,min.diff.pct=0.2)
+saveRDS(markers_cluster13_vs_othersfrommyeloids,file="markers_cluster13_vs_othersfrommyeloids.rds")
+#markers cluster14 vs 0,1,4,5,9,10,13;
+markers_cluster14_vs_othersfrommyeloids<-FindMarkers(harmony_merged_objects,ident.1=14,ident.2=c(0,1,4,5,9,10,13),only.pos=TRUE,min.diff.pct=0.2)
+saveRDS(markers_cluster14_vs_othersfrommyeloids,file="markers_cluster14_vs_othersfrommyeloids.rds")
+###
+setwd("C:/Users/matpg/Desktop/Documentos/doutorado/dados/servidor")
+
+markers_cluster8_vs_othersfromglioma<-readRDS("C:/Users/matpg/Desktop/Documentos/doutorado/dados/servidor/markers_cluster8_vs_othersfromglioma.rds")
+markers_cluster8_vs_othersfromglioma$genes<-rownames(markers_cluster8_vs_othersfromglioma)
+markers_cluster8_vs_othersfromglioma <- markers_cluster8_vs_othersfromglioma[, c(ncol(markers_cluster8_vs_othersfromglioma), 1:(ncol(markers_cluster8_vs_othersfromglioma)-1))]
+write.table(markers_cluster8_vs_othersfromglioma,sep = "\t", row.names = FALSE, col.names = TRUE,file="markers_cluster8_vs_othersfromglioma.txt")
+#
+markers_cluster2_vs_othersfromglioma<-readRDS("C:/Users/matpg/Desktop/Documentos/doutorado/dados/servidor/markers_cluster2_vs_othersfromglioma.rds")
+markers_cluster2_vs_othersfromglioma$genes<-rownames(markers_cluster2_vs_othersfromglioma)
+markers_cluster2_vs_othersfromglioma <- markers_cluster2_vs_othersfromglioma[, c(ncol(markers_cluster2_vs_othersfromglioma), 1:(ncol(markers_cluster2_vs_othersfromglioma)-1))]
+write.table(markers_cluster2_vs_othersfromglioma,sep = "\t", row.names = FALSE, col.names = TRUE,file="markers_cluster2_vs_othersfromglioma.txt")
+#
+markers_cluster6_vs_othersfromglioma<-readRDS("C:/Users/matpg/Desktop/Documentos/doutorado/dados/servidor/markers_cluster6_vs_othersfromglioma.rds")
+markers_cluster6_vs_othersfromglioma$genes<-rownames(markers_cluster6_vs_othersfromglioma)
+markers_cluster6_vs_othersfromglioma <- markers_cluster6_vs_othersfromglioma[, c(ncol(markers_cluster6_vs_othersfromglioma), 1:(ncol(markers_cluster6_vs_othersfromglioma)-1))]
+write.table(markers_cluster6_vs_othersfromglioma,sep = "\t", row.names = FALSE, col.names = TRUE,file="markers_cluster6_vs_othersfromglioma.txt")
+#
+markers_cluster7_vs_othersfromglioma<-readRDS("C:/Users/matpg/Desktop/Documentos/doutorado/dados/servidor/markers_cluster7_vs_othersfromglioma.rds")
+markers_cluster7_vs_othersfromglioma$genes<-rownames(markers_cluster7_vs_othersfromglioma)
+markers_cluster7_vs_othersfromglioma <- markers_cluster7_vs_othersfromglioma[, c(ncol(markers_cluster7_vs_othersfromglioma), 1:(ncol(markers_cluster7_vs_othersfromglioma)-1))]
+write.table(markers_cluster7_vs_othersfromglioma,sep = "\t", row.names = FALSE, col.names = TRUE,file="markers_cluster7_vs_othersfromglioma.txt")
+#
+markers_cluster12_vs_othersfromglioma<-readRDS("C:/Users/matpg/Desktop/Documentos/doutorado/dados/servidor/markers_cluster12_vs_othersfromglioma.rds")
+markers_cluster12_vs_othersfromglioma$genes<-rownames(markers_cluster12_vs_othersfromglioma)
+markers_cluster12_vs_othersfromglioma <- markers_cluster12_vs_othersfromglioma[, c(ncol(markers_cluster12_vs_othersfromglioma), 1:(ncol(markers_cluster12_vs_othersfromglioma)-1))]
+write.table(markers_cluster12_vs_othersfromglioma,sep = "\t", row.names = FALSE, col.names = TRUE,file="markers_cluster12_vs_othersfromglioma.txt")
+#
+markers_cluster21_vs_othersfromglioma<-readRDS("C:/Users/matpg/Desktop/Documentos/doutorado/dados/servidor/markers_cluster21_vs_othersfromglioma.rds")
+markers_cluster21_vs_othersfromglioma$genes<-rownames(markers_cluster21_vs_othersfromglioma)
+markers_cluster21_vs_othersfromglioma <- markers_cluster21_vs_othersfromglioma[, c(ncol(markers_cluster21_vs_othersfromglioma), 1:(ncol(markers_cluster21_vs_othersfromglioma)-1))]
+write.table(markers_cluster21_vs_othersfromglioma,sep = "\t", row.names = FALSE, col.names = TRUE,file="markers_cluster21_vs_othersfromglioma.txt")
+#
+markers_cluster18_vs_othersfromTcells<-readRDS("C:/Users/matpg/Desktop/Documentos/doutorado/dados/servidor/markers_cluster18_vs_othersfromTcells.rds")
+markers_cluster18_vs_othersfromTcells$genes<-rownames(markers_cluster18_vs_othersfromTcells)
+markers_cluster18_vs_othersfromTcells <- markers_cluster18_vs_othersfromTcells[, c(ncol(markers_cluster18_vs_othersfromTcells), 1:(ncol(markers_cluster18_vs_othersfromTcells)-1))]
+write.table(markers_cluster18_vs_othersfromTcells,sep = "\t", row.names = FALSE, col.names = TRUE,file="markers_cluster18_vs_othersfromTcells.txt")
+#
+markers_cluster19_vs_othersfromTcells<-readRDS("C:/Users/matpg/Desktop/Documentos/doutorado/dados/servidor/markers_cluster19_vs_othersfromTcells.rds")
+markers_cluster19_vs_othersfromTcells$genes<-rownames(markers_cluster19_vs_othersfromTcells)
+markers_cluster19_vs_othersfromTcells <- markers_cluster19_vs_othersfromTcells[, c(ncol(markers_cluster19_vs_othersfromTcells), 1:(ncol(markers_cluster19_vs_othersfromTcells)-1))]
+write.table(markers_cluster19_vs_othersfromTcells,sep = "\t", row.names = FALSE, col.names = TRUE,file="markers_cluster19_vs_othersfromTcells.txt")
+#
+markers_cluster16_vs_othersfromTcells<-readRDS("C:/Users/matpg/Desktop/Documentos/doutorado/dados/servidor/markers_cluster16_vs_othersfromTcells.rds")
+markers_cluster16_vs_othersfromTcells$genes<-rownames(markers_cluster16_vs_othersfromTcells)
+markers_cluster16_vs_othersfromTcells <- markers_cluster16_vs_othersfromTcells[, c(ncol(markers_cluster16_vs_othersfromTcells), 1:(ncol(markers_cluster16_vs_othersfromTcells)-1))]
+write.table(markers_cluster16_vs_othersfromTcells,sep = "\t", row.names = FALSE, col.names = TRUE,file="markers_cluster16_vs_othersfromTcells.txt")
+#
+markers_cluster3_vs_othersfromTcells<-readRDS("C:/Users/matpg/Desktop/Documentos/doutorado/dados/servidor/markers_cluster3_vs_othersfromTcells.rds")
+markers_cluster3_vs_othersfromTcells$genes<-rownames(markers_cluster3_vs_othersfromTcells)
+markers_cluster3_vs_othersfromTcells <- markers_cluster3_vs_othersfromTcells[, c(ncol(markers_cluster3_vs_othersfromTcells), 1:(ncol(markers_cluster3_vs_othersfromTcells)-1))]
+write.table(markers_cluster3_vs_othersfromTcells,sep = "\t", row.names = FALSE, col.names = TRUE,file="markers_cluster3_vs_othersfromTcells.txt")
+#
+markers_cluster5_vs_othersfrommyeloids<-readRDS("C:/Users/matpg/Desktop/Documentos/doutorado/dados/servidor/markers_cluster5_vs_othersfrommyeloids.rds")
+markers_cluster5_vs_othersfrommyeloids$genes<-rownames(markers_cluster5_vs_othersfrommyeloids)
+markers_cluster5_vs_othersfrommyeloids <- markers_cluster5_vs_othersfrommyeloids[, c(ncol(markers_cluster5_vs_othersfrommyeloids), 1:(ncol(markers_cluster5_vs_othersfrommyeloids)-1))]
+write.table(markers_cluster5_vs_othersfrommyeloids,sep = "\t", row.names = FALSE, col.names = TRUE,file="markers_cluster5_vs_othersfrommyeloids.txt")
+#
+
+
+```
+
+```{r enrichment}
+#install.packages(c("dplyr", "tidyverse", "pheatmap", "ggupset", 
+#                   "patchwork", "Matrix", "RColorBrewer"))
+#BiocManager::install(c("org.Hs.eg.db", "clusterProfiler", "GSEABase", 
+#                       "enrichplot", "biomaRt","pathview"))
+
+library(dplyr)
+library(tidyverse)
+library(org.Hs.eg.db)
+library(pheatmap)
+library(ggupset)
+library(clusterProfiler)
+library(GSEABase)
+library(enrichplot)
+library(biomaRt)
+library(pathview)
+setwd("C:/Users/matpg/Desktop/Documentos/doutorado/dados/enrich/")
+
+#bgset<-read.gmt("C:/Users/matpg/Desktop/Documentos/doutorado/dados/enrich/c2.cp.kegg_medicus.v2023.2.Hs.symbols.gmt")
+markers_cluster8_vs_othersfromglioma<-readRDS("C:/Users/matpg/Desktop/Documentos/doutorado/dados/servidor/markers_cluster8_vs_othersfromglioma.rds")
+markers_cluster8_vs_othersfromglioma$genes<-rownames(markers_cluster8_vs_othersfromglioma)
+markers_cluster8_vs_othersfromglioma <- markers_cluster8_vs_othersfromglioma[, c(ncol(markers_cluster8_vs_othersfromglioma), 1:(ncol(markers_cluster8_vs_othersfromglioma)-1))]
+
+deg<-filter(markers_cluster8_vs_othersfromglioma, p_val_adj<=0.05)
+deg$ids<-mapIds(org.Hs.eg.db,keys = deg$gene,column="ENTREZID", keytype="SYMBOL")
+degup<-filter(deg, avg_log2FC>1)
+degdown<-filter(deg,avg_log2FC<(-1))
+
+#### tentar susbstituir NAs com o ensembl:
+sum(is.na(deg$ids))
+genes_with_na_ids <- data.frame(symbols=deg$genes[is.na(deg$ids)])
+
+ensembl <- useMart("ensembl", dataset = "hsapiens_gene_ensembl")
+updated_symbols_hgnc <- getBM(
+    attributes = c('entrezgene_id','hgnc_symbol','external_synonym'),
+    filters = 'external_synonym',
+    values = genes_with_na_ids,
+    mart = ensembl
+)
+sum(is.na(updated_symbols_hgnc$entrezgene_id))
+
+merged_deg <- merge(
+  deg, 
+  updated_symbols_hgnc, 
+  by.x = "genes", 
+  by.y = "external_synonym", 
+  all.x = TRUE
+)
+merged_deg$ids <- ifelse(is.na(merged_deg$ids), merged_deg$entrezgene_id, merged_deg$ids)
+merged_deg <- merged_deg[,!(names(merged_deg) %in% c("entrezgene_id","hgnc_symbol"))]
+
+sum(is.na(merged_deg$ids))
+deg<-merged_deg
+###
+
+### KEGG
+degup<-filter(deg, abs(avg_log2FC)>1)
+enrich_up_kegg <- enrichKEGG(degup$ids)
+barplot(enrich_up_kegg, showCategory = 10, title = "Top 10 Enriched Pathways", font.size = 6)
+# Barplot
+barplot(enrich_up_kegg, showCategory = 20) 
+mutate(enrich_up_kegg, qscore = -log(qvalue, base = 10)) %>% 
+  barplot(x = "qscore",showCategory = 10,title = "Enriched Pathways")
+
+# Create a bar plot using ggplot2 with a single color
+enrich_up_kegg_df <- as.data.frame(enrich_up_kegg) %>%
+  mutate(qscore = -log10(qvalue))
+
+indices<-c(1,3:6,8,9,12,13,15,16,17,21,22)
+tiff("enriched_kegg_cluster8.tiff",width=10,height=4,units="in",res=300)
+ggplot(enrich_up_kegg_df[indices, ], aes(x = reorder(Description, qscore), y = qscore)) +
+  geom_bar(stat = "identity", fill = "#CC0033") +
+  coord_flip() +
+  labs(title = "Enriched KEGG Pathways",
+       x = NULL,
+       y = "-log10(qvalue)") +
+  theme_minimal()
+dev.off()
+
+#pathview
+degall<-filter(deg, abs(avg_log2FC)>1)
+enrich_all_kegg <- enrichKEGG(degall$ids)
+
+deg_all_fc<-degall[, c("ids", "avg_log2FC")]
+deg_all_fc<-deg_all_fc[!is.na(deg_all_fc$ids), ]
+deg_all_fc_list<-deg_all_fc$avg_log2FC
+names(deg_all_fc_list)<-deg_all_fc$ids
+deg_all_fc_list <- sort(deg_all_fc_list, decreasing = TRUE)
+
+hist(deg_all_fc_list, breaks = 50, main = "Distribution of Fold Changes", xlab = "Fold Change")
+
+
+top_kegg<-head(enrich_all_kegg, n = 15)
+output_dir<-"C:/Users/matpg/Desktop/Documentos/doutorado/dados/enrich/"
+for (i in 1:nrow(top_kegg)) {
+    pathway_id <- top_kegg$ID[i]
+    pathview(gene.data=deg_all_fc_list,pathway.id=pathway_id,species= "hsa",limit=list(gene=c(-3,3)))
+}
+
+
+### GO
+enrich_up_go<-enrichGO(degup$ids,OrgDb=org.Hs.eg.db,ont="ALL")
+dotplot(enrich_up_go, split = "ONTOLOGY", font.size=6)
+
+dotplot(enrich_up_go, split = "ONTOLOGY",font.size=0.2) + facet_grid(ONTOLOGY ~ ., scales = "free") +
+  labs(title = "GO Enrichment Analysis", x = "Gene Ratio", y = "GO Term") +
+  theme_minimal()
+#
+
+enrich_up_go_df <- as.data.frame(enrich_up_go) %>%
+  mutate(qscore = -log10(qvalue))
+# Create a bar plot using ggplot2 with different colors for each ontology
+# Filter the top 30 terms for each ontology
+top_30_bp <- enrich_up_go_df %>% filter(ONTOLOGY == "BP") %>% top_n(30, wt = qscore)
+top_30_cc <- enrich_up_go_df %>% filter(ONTOLOGY == "CC") %>% top_n(30, wt = qscore)
+top_30_mf <- enrich_up_go_df %>% filter(ONTOLOGY == "MF") %>% top_n(30, wt = qscore)
+# Plot BP
+tiff("enriched_GO_BP_cluster8.tiff",width=10,height=6,units="in",res=300)
+ggplot(top_30_bp, aes(x = reorder(Description, qscore), y = qscore, fill = ONTOLOGY)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  scale_fill_manual(values = c("BP" = "#FF6666")) +
+  labs(title = "Enriched GO Terms for Biological Process",
+       x = NULL,
+       y = "Enrichment Score (-log10 qvalue)",
+       fill = "Ontology") +
+  theme_minimal()
+dev.off()
+
+# Plot CC
+tiff("enriched_GO_CC_cluster8.tiff",width=10,height=7,units="in",res=300)
+ggplot(top_30_cc, aes(x = reorder(Description, qscore), y = qscore, fill = ONTOLOGY)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  scale_fill_manual(values = c("CC" = "mediumseagreen")) +
+  labs(title = "Enriched GO Terms for Cellular Component",
+       x = NULL,
+       y = "Enrichment Score (-log10 qvalue)",
+       fill = "Ontology") +
+  theme_minimal()
+dev.off()
+
+# Plot MF
+tiff("enriched_GO_MF_cluster8.tiff",width=10,height=6,units="in",res=300)
+ggplot(top_30_mf, aes(x = reorder(Description, qscore), y = qscore, fill = ONTOLOGY)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  scale_fill_manual(values = c("MF" = "steelblue")) +
+  labs(title = "Enriched GO Terms for Molecular Function",
+       x = NULL,
+       y = "Enrichment Score (-log10 qvalue)",
+       fill = "Ontology") +
+  theme_minimal()
+dev.off()
+#
+#all three ontologies
+enrich_up_go_df <- as.data.frame(enrich_up_go) %>%
+  mutate(qscore = -log10(qvalue))
+# Filter the top 10 terms for each ontology
+top_terms <- enrich_up_go_df %>%
+  group_by(ONTOLOGY) %>%
+  top_n(10, wt = qscore) %>%
+  ungroup()
+# Create a bar plot using ggplot2 with different colors for each ontology and facet by ONTOLOGY
+ggplot(top_terms, aes(x = reorder(Description, qscore), y = qscore, fill = ONTOLOGY)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  scale_fill_manual(values = c("BP" = "coral", "CC" = "mediumseagreen", "MF" = "steelblue")) +
+  labs(title = "Enriched GO Terms for Each Ontology",
+       x = "GO Term",
+       y = "Enrichment Score (-log10 qvalue)",
+       fill = "Ontology") +
+  theme_minimal() +
+  facet_grid(ONTOLOGY ~ ., scales = "free", space = "free")
+##
+#goplot(enrich_up_go,showCategory = 10)
+#enrichment map
+tiff("emapplot_kegg_cluster8.tiff",width=10,height=6,units="in",res=300)
+emapplot(pairwise_termsim(enrich_up_kegg),cex_label_category = 0.6)
+dev.off()
+emapplot(pairwise_termsim(enrich_up_go),showCategory=10,cex_label_category = 0.6)
+
+heatplot(enrich_up_kegg,showCategory = 14)
+upsetplot(enrich_up_kegg)
+##heatplot specific paths ids:
+indices<-c(1:6, 8, 10, 13)
+tiff("heatplot_kegg_cluster8.tiff",width=12,height=6,units="in",res=900)
+subset_result <- enrich_up_kegg@result %>% 
+  slice(indices)
+subset_enrich_up_kegg <- enrich_up_kegg
+subset_enrich_up_kegg@result <- subset_result
+heatplot(subset_enrich_up_kegg, showCategory = length(indices))+ theme(axis.text.x = element_text(angle=90,vjust=0.5, hjust=1,size=6))+xlab("genes")
+dev.off()
+##
+
+
+##GSEA
+#deg$ids<-mapIds(org.Hs.eg.db,keys = deg$gene,column="ENTREZID", keytype="SYMBOL")
+deg_fc<-deg[, c("ids", "avg_log2FC")]
+deg_fc<-deg_fc[!is.na(deg_fc$ids), ]
+deg_fc_list<-deg_fc$avg_log2FC
+names(deg_fc_list)<-deg_fc$ids
+deg_fc_list <- sort(deg_fc_list, decreasing = TRUE)
+
+
+#gse KEGG
+gse_kegg_result <-gseKEGG(geneList = deg_fc_list,organism = "hsa")
+gseaplot2(gse_kegg_result, geneSetID = 13, title = gse_kegg_result$Description[13])
+gseaplot2(gse_kegg_result, geneSetID = 15, title = gse_kegg_result$Description[15])
+tiff("gseplot_kegg_HR_cluster8.tiff",width=12,height=6,units="in",res=300)
+gseaplot2(gse_kegg_result, geneSetID= 17,title=gse_kegg_result$Description[17])
+dev.off()
+
+tiff("gseplot_kegg_cluster8.tiff",width=12,height=6,units="in",res=300)
+gseaplot2(gse_kegg_result, geneSetID = 1:32, subplots = 1)
+dev.off()
+
+ridgeplot_obj <- ridgeplot(gse_kegg_result, showCategory = 32)
+plot_info <- ggplot_build(ridgeplot_obj)
+y_limits <- plot_info$layout$panel_params[[1]]$y.range
+tiff("ridgeplot_kegg_cluster8.tiff",width=8,height=10,units="in",res=400)
+ridgeplot(gse_kegg_result,showCategory=32)+theme(axis.text.y = element_text(size = 10))
+dev.off()
+#GSE GO
+gse_go_result<-gseGO(geneList=deg_fc_list,OrgDb = org.Hs.eg.db,ont ="BP")
+tiff("gseplot_go_dnarepair_cluster8.tiff",width=12,height=6,units="in",res=300)
+gseaplot2(gse_go_result, geneSetID = 40, title = gse_go_result$Description[40])
+dev.off()
+ridgeplot(gse_go_result,showCategory=32)+theme(axis.text.y = element_text(size = 6))
+
+
+```
+
+```{r packages}
+
+#install.packages(c("dplyr", "tidyverse", "pheatmap", "ggupset", 
+#                   "patchwork", "Matrix", "RColorBrewer"))
+#BiocManager::install(c("org.Hs.eg.db", "clusterProfiler", "GSEABase", 
+#                       "enrichplot", "biomaRt","pathview"))
+
+markers_rGBM_vs_GMB<-FindMarkers(harmony_merged_objects,ident.1="Recurrent GBM",ident.2="GBM",group.by="Type")
+markers_GBMs_vs_LGG<-FindMarkers(harmony_merged_objects,ident.1=c("Recurrent GBM","GBM"),ident.2="LGG",group.by="Type")
+
+
+markers_rGBM_vs_GMB_gliomaclusters <- FindMarkers(harmony_merged_objects,ident.1="Recurrent GBM",ident.2="GBM",group.by="Type", subset.ident = c(2,6,7,8,11,12,21))
+saveRDS(markers_rGBM_vs_GMB_gliomaclusters,file="markers_rGBM_vs_GMB_gliomaclusters.rds")
+
+markers_GBMs_vs_LGG_gliomaclusters <- FindMarkers(harmony_merged_objects,ident.1=c("Recurrent GBM","GBM"),ident.2="LGG",group.by="Type", subset.ident = c(2,6,7,8,11,12,21))
+saveRDS(markers_GBMs_vs_LGG_gliomaclusters,file="markers_GBMs_vs_LGG_gliomaclusters.rds")
+
+```
+
+```{r featureplots}
+pdf(file = 'featureplots_MDSCmarkers.pdf', width = 14, height = 6)
+FeaturePlot(harmony_merged_objects, features = c("ITGAM", "ITGAX","MIF","S100A9"),ncol = 4)
+par(cex.axis = 0.4)
+dev.off()
+
+
+
+pdf(file = 'featureplots_ACmarkers.pdf', width = 50, height = 30)
+FeaturePlot(harmony_merged_objects, features = c("CST3", "S100B", "SLC1A3", "HEPN1", "HOPX", "MT3", "SPARCL1", "MLC1", "GFAP", "FABP7", "BCAN", "PON2", 
+                                                 "METTL7B", "SPARC", "GATM", "RAMP1", "PMP2", "AQP4", "DBI", "EDNRB", "PTPRZ1", "CLU", "PMP22", "ATP1A2", 
+                                                 "S100A16", "HEY1", "PCDHGC3", "TTYH1", "NDRG2", "PRCP", "ATP1B2", "AGT", "PLTP", "GPM6B", "F3", "RAB31", 
+                                                 "PLPP3", "ANXA5", "TSPAN7"),min.cutoff='q10' ,ncol = 10)
+par(cex.axis = 0.2)
+dev.off()
+
+
+```
+
